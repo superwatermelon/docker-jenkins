@@ -9,5 +9,9 @@ test:
 
 release:
 	docker build --tag $(IMAGE_NAME):$(tag) .
+	docker tag $(IMAGE_NAME):$(tag) $(IMAGE_NAME):latest
+	scripts/docker-login
+	docker push $(IMAGE_NAME):$(tag)
+	docker push $(IMAGE_NAME):latest
 
 .PHONY: image test release
