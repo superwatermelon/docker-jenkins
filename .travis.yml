@@ -4,10 +4,10 @@ services:
   - docker
 
 before_script:
-  - make image
+  - make image TAG=$TRAVIS_BRANCH
 
 script:
-  - make test
+  - make test TAG=$TRAVIS_BRANCH
 
 deploy:
   provider: script
